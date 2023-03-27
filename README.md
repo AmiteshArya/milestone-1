@@ -20,7 +20,9 @@ Dev Environment Screenshot:
 
 
 8. Pull tensorflow image in docker. 
-9. Run sample Jupyter Notebook server docker image using tensorflow
+9. Run sample Jupyter Notebook server docker image using tensorflow to play around with tensorflow in a containerized environment.
+
+
 Seen Below
 ![image](https://user-images.githubusercontent.com/61525462/227818351-43e86ffe-63d4-4367-903a-0927a6bcdf7b.png)
 ![image](https://user-images.githubusercontent.com/61525462/227818386-e1733d14-4367-4504-8a39-abc21c13abee.png)
