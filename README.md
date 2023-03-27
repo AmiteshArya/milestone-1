@@ -15,6 +15,8 @@ Seen Below
 Dev Environment Screenshot:
 ![image](https://user-images.githubusercontent.com/61525462/227696224-738e21be-d54a-49eb-a699-09d0239d1cfd.png)
 ![image](https://user-images.githubusercontent.com/61525462/227818398-e7b6573d-4bed-4e0b-8940-c0b2fdd445df.png)
+![image](https://user-images.githubusercontent.com/61525462/227834065-aaca5a2f-c5ba-4848-b9e2-98be14f5b29a.png)
+
 
 
 8. Pull tensorflow image in docker. 
