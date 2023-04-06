@@ -2,7 +2,7 @@ Milestone 2.
 Please run notebook in nbviewer to see the javascript graphs from shap. 
 https://nbviewer.org./github/AmiteshArya/milestone-1/blob/milestone2/milestone2.ipynb
 
-Please see comments for thought process and procedure.
+Please see embedded notebook comments for thought process and procedure.
 
 Additional Comments:
 
