@@ -3,4 +3,4 @@ pandas
 xgboost
 shap
 optuna
-sklearn
+sklearn.metrics
