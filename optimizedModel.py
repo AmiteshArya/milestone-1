@@ -81,14 +81,15 @@ oldPrediction = oldFit.predict(x_testOne)
 
 
 def runModel(inputDF):
-    st.write("Old Model Prediction: ")
-    st.write('\$' + str(oldFit.predict(x_testOne)[0]))
-    st.write("New Model Prediction: ")
-    priceGuess = '\$' + str(int(0.85* int(bestFit.predict(inputDF)[0]))) + '---\$' + str(int(1.15* int(bestFit.predict(inputDF)[0])))
-    st.write(priceGuess)
+    st.subheader("Old Model Prediction: ")
+    st.subheader('\$' + str(int(oldFit.predict(x_testOne)[0])))
+    st.subheader("New Model Prediction: ")
+    priceGuess = '\$' + str(int(0.85* int(bestFit.predict(inputDF)[0]))) + ' - \$' + str(int(1.15* int(bestFit.predict(inputDF)[0])))
+    st.subheader(priceGuess)
     explainer = shap.TreeExplainer(bestFit)
     shap_values = explainer.shap_values(inputDF)
     shap_interaction_values = explainer.shap_interaction_values(inputDF)
+    st.subheader("SHAP Summary & Interaction Plot:")
     shap.summary_plot(shap_values, inputDF,plot_type="bar")
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
@@ -98,11 +99,12 @@ def runModel(inputDF):
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
-st.write("Housing Prediction Model - Amitesh Arya")
+st.header(
+    "House Price Prediction in Ames, Iowa - Amitesh Arya")
 
 
 
-print('$' + str(0.95 * predictTestData[0]))
+#print('$' + str(0.95 * predictTestData[0]))
 #st.write(x_testOne)
 OverallQual_Slider = st.sidebar.slider(
     'Overall Quality',
@@ -175,7 +177,7 @@ HalfBath_Slider = st.sidebar.slider(
 
 
 
-if st.button('Calculate Price'):
+if st.button('Calculate Range of House Price'):
     x_testOne['OverallQual'] = OverallQual_Slider
     x_testOne['GrLivArea'] = GrLivArea_Slider
     x_testOne['TotalBsmtSF'] = TotalBsmtSF_Slider
