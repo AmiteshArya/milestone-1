@@ -68,60 +68,119 @@ x_testOne = pd.read_csv('testOne.csv')
 predictTestData = bestFit.predict(x_testOne)
 
 
+def runModel(inputDF):
+    priceGuess = '\$' + str(int(0.85* int(bestFit.predict(inputDF)[0]))) + '---\$' + str(int(1.15* int(bestFit.predict(inputDF)[0])))
+    st.write(priceGuess)
+    explainer = shap.TreeExplainer(bestFit)
+    shap_values = explainer.shap_values(inputDF)
+    shap_interaction_values = explainer.shap_interaction_values(inputDF)
+    shap.summary_plot(shap_values, inputDF,plot_type="bar")
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
+    shap.summary_plot(shap_interaction_values)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
 
 st.write("Housing Prediction Model - Amitesh Arya")
 
 
 
-print('$' + str(0.95 * predictTestData[0]), 'to', '$' + str(1.05* predictTestData[0]))
+print('$' + str(0.95 * predictTestData[0]))
 #st.write(x_testOne)
-MSubClass_Slider = st.sidebar.slider(
-    'MSSubClass',
-    20, 190
+OverallQual_Slider = st.sidebar.slider(
+    'Overall Quality',
+    1, 10
 )
+
+GrLivArea_Slider = st.sidebar.slider(
+    'General Living Area',
+    1, 10000
+)
+
+TotalBsmtSF_Slider = st.sidebar.slider(
+    'TotalBasement Square Foot',
+    1, 5000
+)
+
+YearRemodAdd_Slider = st.sidebar.slider(
+    'Remodel Date',
+    1930, 2023
+)
+
+
+
+YearBuilt_Slider = st.sidebar.slider(
+    'Build Date',
+    1700, 2023
+)
+
+GarageCars_Slider = st.sidebar.slider(
+    '# Car Garage',
+    0,10
+)
+
+LotArea_Slider = st.sidebar.slider(
+    'Lot Area',
+    1, 20000
+)
+
+
+OverallCond_Slider = st.sidebar.slider(
+    'Overall Condition',
+    1, 10
+)
+
+GarageArea_Slider = st.sidebar.slider(
+    'Garage Area',
+    1, 1000
+)
+
+FirstFlrSF_Slider = st.sidebar.slider(
+    'First Floor Square Foot',
+    1, 3000
+)
+
+SecondFlrSF_Slider = st.sidebar.slider(
+    'Second Floor Square Foot',
+    1, 3000
+)
+
+FullBath_Slider = st.sidebar.slider(
+    'Number of Full Bathrooms',
+    1, 10
+)
+
+HalfBath_Slider = st.sidebar.slider(
+    'Number of Half Bathrooms',
+    1, 10
+)
+
+
+
+
+if st.button('Calculate Price'):
+    x_testOne['OverallQual'] = OverallQual_Slider
+    x_testOne['GrLivArea'] = GrLivArea_Slider
+    x_testOne['TotalBsmtSF'] = TotalBsmtSF_Slider
+    x_testOne['YearBuilt'] = YearBuilt_Slider
+    x_testOne['YearRemodAdd'] = YearRemodAdd_Slider 
+    x_testOne['GarageCars'] = GarageCars_Slider
+    x_testOne['OverallCond'] = OverallCond_Slider
+    x_testOne['LotArea'] = LotArea_Slider
+    x_testOne['GarageArea'] = GarageArea_Slider 
+    x_testOne['1stFlrSF'] = FirstFlrSF_Slider 
+    x_testOne['2ndFlrSF'] = SecondFlrSF_Slider 
+    x_testOne['FullBath'] = FullBath_Slider 
+    x_testOne['HalfBath'] = HalfBath_Slider 
+    
+    
+    runModel(x_testOne)
 #st.write(add_slider)
 
-def runModel(inputDF):
-    st.write(bestFit.predict(inputDF)[0])
 
 
-x_testOne['YearBuilt'] = 1990
-st.write(x_testOne)
-print("ran model from function:", runModel(x_testOne))
-""" 	Id	
-	MSSubClass x 
-	LotFrontage
-	LotArea
-	OverallQual
-	OverallCond
-	YearBuilt
-	YearRemodAdd
-	MasVnrArea
-	BsmtFinSF1
-	BsmtFinSF2
-	BsmtUnfSF
-	TotalBsmtSF
-	1stFlrSF
-	2ndFlrSF
-	LowQualFinSF
-	GrLivArea
-	BsmtFullBath
-	BsmtHalfBath
-	FullBath
-	HalfBath
-	BedroomAbvGr
-	KitchenAbvGr
-	TotRmsAbvGrd
-	Fireplaces
-	GarageYrBlt
-	GarageCars
-	GarageArea
-	WoodDeckSF
-	OpenPorchSF
-	EnclosedPorch
-	3SsnPorch
-	ScreenPorch
-	PoolArea
-	MiscVal
-	MoSold
-	YrSold """
+#x_testOne['YearBuilt'] = 1990
+#st.write(x_testOne)
+#print("ran model from function:", runModel(x_testOne))
