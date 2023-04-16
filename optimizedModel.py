@@ -9,6 +9,16 @@ import streamlit as st
 #from sklearn.metrics import mean_squared_error
 
 @st.cache_data
+def createOldModel():
+    data = pd.read_csv('train.csv')
+    x = data.drop(['SalePrice'],axis=1)
+    y = data['SalePrice']
+    x = x.select_dtypes(include = ['float64', 'int64'])
+    oldModelFit=xgb.XGBRegressor(learning_rate = 0.01,
+                           eval_metric='rmsle')
+    oldModelFit.fit(x,y)
+    return oldModelFit
+@st.cache_data
 def createModel():
     #Read training data and data to test model against, both into a dataframe
     data = pd.read_csv('train.csv')
@@ -60,15 +70,20 @@ def createModel():
     return bestFit
 
 bestFit = createModel()
+oldFit = createOldModel()
 #I gave the now trained model the new test data which it has not seen before.
 x_testOne = pd.read_csv('testOne.csv')
 #print(x_testOne)
 #print(x_test)
 #x_test.to_csv('remainingCol.csv')
 predictTestData = bestFit.predict(x_testOne)
+oldPrediction = oldFit.predict(x_testOne)
 
 
 def runModel(inputDF):
+    st.write("Old Model Prediction: ")
+    st.write('\$' + str(oldFit.predict(x_testOne)[0]))
+    st.write("New Model Prediction: ")
     priceGuess = '\$' + str(int(0.85* int(bestFit.predict(inputDF)[0]))) + '---\$' + str(int(1.15* int(bestFit.predict(inputDF)[0])))
     st.write(priceGuess)
     explainer = shap.TreeExplainer(bestFit)
