@@ -6,7 +6,7 @@ import xgboost as xgb
 import shap
 import optuna
 import streamlit as st
-from sklearn.metrics import mean_squared_error
+#from sklearn.metrics import mean_squared_error
 
 @st.cache_data
 def createModel():
@@ -43,7 +43,7 @@ def createModel():
         model = xgb.XGBRegressor(**param)
         model.fit(x, y)
         y_pred = model.predict(x_test)
-        return mean_squared_error(y_pred, y_true)
+        #return mean_squared_error(y_pred, y_true)
 
 
     #study = optuna.create_study(direction='minimize', study_name='regression')
