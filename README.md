@@ -16,5 +16,7 @@ Documentation:
     performance to be within roughly $15,000 of the actual sale price. From looking at the SHAP Summary plots, the most impactful feature was the Overall Quality feature,     the rest can be seen in the shap summary plot from the milestone2 notebook. 
 
 
-A lot of the files are not relavant so please look only at optimizedModel.py and the streamlit cloud link. Thank You
+
 Streamlit Cloud Link: https://amitesharya-milestone-1-optimizedmodel-milestone3-bx3em1.streamlit.app/
+Google Sites Landing Page: https://sites.google.com/njit.edu/cs301milestone4/home
+Youtube Video: 
