@@ -20,4 +20,5 @@ Documentation:
 Streamlit Cloud Link: https://amitesharya-milestone-1-optimizedmodel-milestone3-bx3em1.streamlit.app/
 
 Google Sites Landing Page: https://sites.google.com/njit.edu/cs301milestone4/home
-Youtube Video: 
+
+Youtube Video: https://www.youtube.com/watch?v=cgjSoYwXpgM
